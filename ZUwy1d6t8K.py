@@ -27,7 +27,7 @@ class UnauthorizedUserException(Exception):
     pass
 # hello command
 
-build_version = 12202024
+build_version = 12242024
 dev = f"build {build_version} by vekman"
 
 def get_jwt_token():
