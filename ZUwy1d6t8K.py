@@ -5,28 +5,22 @@ import logging
 import json
 
 
-# get jwt appauth
-# get_jwt_url = "https://sapi.fpt.vn:443/token/GenerateToken"
-# get_jwt_headers = {"Accept": "application/json, text/plain, */*", "Accept-Encoding": "gzip, deflate", "User-Agent": "HRISProject/1995 CFNetwork/1492.0.1 Darwin/23.3.0", "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8", "Authorization": "Basic dGh1eWhrMkBmcHQuY29tLnZuOjEyMzQ1Ng=="}
-# response = requests.get(get_jwt_url, headers=get_jwt_headers)
-
-# app_auth = response.text.strip(' " ')
-
+#THE INFORMATION NEED CHANGE
 # token
-TOKEN = "7584388846:AAHVAt679cJF4eR4k2x3OZRdcPtgLiW_xZE"
-#app_auth = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aHV5aGsyQGZwdC5jb20udm4iLCJleHAiOjE3MzQ2MDE1MTh9.RCsfvyBf4i7gwQpUlb1sYDrbEg9JBaaOwPvQ42RDCtg"
-auth_app = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjYwMTY3IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImhpZXBudnRAY3lyYWRhci5jb20iLCJBc3BOZXQuSWRlbnRpdHkuU2VjdXJpdHlTdGFtcCI6Ik5RVlpHRE40V05JV1pUR0ZVQjZQUkRHNFdVTk5WRlBDIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiRW1wbG95ZWUiLCJodHRwOi8vd3d3LmFzcG5ldGJvaWxlcnBsYXRlLmNvbS9pZGVudGl0eS9jbGFpbXMvdGVuYW50SWQiOiIxIiwiRW1wbG95ZWVJZENsYWltIjoiNTk4MDQiLCJzdWIiOiI2MDE2NyIsImp0aSI6IjliZWE0ZTQ3LWY4N2ItNDgyZi1hY2EyLTc4ZjM5OGMwYjY2ZSIsImlhdCI6MTczNDM0NDIzOCwibmJmIjoxNzM0MzQ0MjM4LCJleHAiOjE3MzY5MzYyMzgsImlzcyI6IkhSSVMiLCJhdWQiOiJIUklTIn0.c5Xjb6_llMkr-dVOnS5Tk_Dnvm7giypBPz2NGGKZBjo"
-YOUR_USER_ID=1659283040
+TOKEN = "YOUR_BOT_TOKEN" #CHANGE YOUR BOT TOKEN EXP (7584388836:AAHVAt679cJF4eR4k2x3OZRdcPtgLiW_xZE)
+
+auth_app = "YOUR_JWT_LOGIN" #CHANGE YOUR JWT
+YOUR_USER_ID="TELEGRAM_USER_ID"# CHANGE YOUR TELEGRAM USERID FROM TELEGRAM BOT: @userinfobot
 # data
 url = "https://sapi.fpt.vn:443/hrapi/api/services/app/Checkin/Checkin"
 
-burp0_in={"CheckinType": 1, "SmartPhoneDeviceIMEI": "016E157F-90A6-4DCD-B3FB-439AD49EC713"}
-burp0_out={"CheckinType": 2, "SmartPhoneDeviceIMEI": "016E157F-90A6-4DCD-B3FB-439AD49EC713"}
+burp0_in={"CheckinType": 1, "SmartPhoneDeviceIMEI": "016E157F-90A6-4DCD-B3FB-439AD49EC713"} #CHANGE YOUR IMEI IS MOBILE DEVICES YOU ACTIVE CHECKIN
+burp0_out={"CheckinType": 2, "SmartPhoneDeviceIMEI": "016E157F-90A6-4DCD-B3FB-439AD49EC713"} #CHANGE YOUR IMEI IS MOBILE DEVICES YOU ACTIVE CHECKIN
 
 class UnauthorizedUserException(Exception):
     pass
 # hello command
-
+#END CHANGE
 build_version = 12242024
 dev = f"build {build_version} by vekman"
 
@@ -64,7 +58,7 @@ def whoami(update: Update, context: CallbackContext) -> None:
 
 # check auth to use bot
 def auth(update: Update, context: CallbackContext) -> None:
-    if update.message.from_user.id == 1659283040:
+    if update.message.from_user.id == YOUR_USER_ID:
         return 1
     else:
         return 0
