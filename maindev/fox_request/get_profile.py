@@ -20,4 +20,4 @@ def p(update: Update, context: CallbackContext) -> None:
         update.message.reply_text(f"You are {full_name}, seniority {seniority}")
     else:
         update.message.reply_text("not you, exiting ...")
-        update.message.reply_text(build_version())
+    update.message.reply_text(build_version())

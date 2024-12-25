@@ -1,11 +1,13 @@
 from telegram import Update
 from telegram.ext import CallbackContext
 import requests
+from fox_request.burp_post_data import *
 from token_data import *
 from auth import *
-from fox_request.burp_post_data import *
 from dev import *
 
+class UnauthorizedUserException(Exception):
+    pass
 # in
 def c(update: Update, context: CallbackContext) -> None:
     rs = auth(update, context)

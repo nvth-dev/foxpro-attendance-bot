@@ -2,10 +2,9 @@ from telegram.ext import Updater, CommandHandler
 from auth import *
 from token_data import *
 from fox_request import *
-from fox_request.get_calendar import *
 from dev_command import *
-class UnauthorizedUserException(Exception):
-    pass
+
+
 
 def main() -> None:
     TOKEN = bot_token()

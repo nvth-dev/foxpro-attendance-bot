@@ -1,1 +1,1 @@
-from build_version import *
+from .build_version import *
