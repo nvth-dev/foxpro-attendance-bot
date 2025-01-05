@@ -3,9 +3,10 @@ from telegram.ext import CallbackContext
 import requests
 from auth import *
 from dev import *
+from auth import is_valid_user
 
 # get your profile and seniority
-def p(update: Update, context: CallbackContext) -> None:
+def p_process(update: Update, context: CallbackContext) -> None:
     update.message.reply_text("checking profile ... ")
     rs = auth(update, context)
     get_p_url = "https://sapi.fpt.vn/hrapi/api/services/app/Employee/GetProfile"
@@ -20,4 +21,15 @@ def p(update: Update, context: CallbackContext) -> None:
         update.message.reply_text(f"You are {full_name}, seniority {seniority}")
     else:
         update.message.reply_text("not you, exiting ...")
+
+def p_exec(update: Update, context: CallbackContext) -> None:
+    rs = auth(update, context)
+    if rs == 1:
+        is_exp = istoken_expired(update, context)
+        if is_exp == 1:
+            p_process(update, context)  
+        else:
+            update.message.reply_text("Token maybe expired, please /getcode to get new your jwt, exitting ...")
+    else:
+        update.message.reply_text("not you, exiting ...")     
     update.message.reply_text(build_version())
