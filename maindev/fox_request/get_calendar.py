@@ -42,8 +42,10 @@ def cal_process(update: Update, context: CallbackContext) -> None:
                 in_status = log.get('checkinStatus', '')
                 out_status = log.get('checkoutStatus', '')
                 isAttdEnabled = log.get('isAttdEnabled', '')
+                checkinTime = log.get('checkinTime', '')
+                checkoutTime = log.get('checkoutTime', '')
                 
-                message += f"Date: {date}\nIn Status: {in_status}\nOut Status: {out_status}\nisAttendent: {isAttdEnabled}\n\n"
+                message += f"Date: {date}\nIn Status: {in_status}\nIn Time: {checkinTime}\nOut Status: {out_status}\nOut Time: {checkoutTime}\nisAttendent: {isAttdEnabled}\n\n"
             
             if message:
                 update.message.reply_text(message)
@@ -59,6 +61,7 @@ def cal_exec(update: Update, context: CallbackContext) -> None:
     if rs == 1:
         is_exp = istoken_expired(update, context)
         if is_exp == 1:
+            update.message.reply_text('Listing ...')
             cal_process(update, context)  
         else:
             update.message.reply_text("Token maybe expired, please /getcode to get new your jwt, exitting ...")

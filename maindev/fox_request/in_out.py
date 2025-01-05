@@ -19,7 +19,6 @@ def c_process(update: Update, context: CallbackContext) -> None:
     #get headers
     burp0_headers = {"Content-Type": "application/json", "Pragma": "no-cache", "Accept": "application/json, text/plain, */*", "Authorization": f"Bearer {app_jwt}", "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8", "Cache-Control": "no-cache, no-store, must-revalidate", "Platform": "ios", "Accept-Encoding": "gzip, deflate", "App-Authorization": f"Bearer {your_jwt}", "User-Agent": "HRISProject/1995 CFNetwork/1492.0.1 Darwin/23.3.0"}
     #execute
-    update.message.reply_text("onstage ...")
     response = requests.post(url, headers=burp0_headers, json=data_in)
     update.message.reply_text(f"Response: {response.text}")
 
@@ -28,6 +27,7 @@ def c_exec(update: Update, context: CallbackContext) -> None:
     if rs == 1:
         is_exp = istoken_expired(update, context)
         if is_exp == 1:
+            update.message.reply_text("onstage ...")
             c_process(update, context)  
         else:
             update.message.reply_text("Token maybe expired, please /getcode to get new your jwt, exitting ...")
@@ -49,7 +49,6 @@ def o_process(update: Update, context: CallbackContext) -> None:
     data_out=data_burp[2]
 
     #execute
-    update.message.reply_text("outstage ...")
     response = requests.post(url, headers=burp0_headers, json=data_out)
     update.message.reply_text(f"Response: {response.text}")
 
@@ -58,6 +57,7 @@ def o_exec(update: Update, context: CallbackContext) -> None:
     if rs == 1:
         is_exp = istoken_expired(update, context)
         if is_exp == 1:
+            update.message.reply_text("outstage ...")
             o_process(update, context)  
         else:
             update.message.reply_text("Token maybe expired, please /getcode to get new your jwt, exitting ...")
