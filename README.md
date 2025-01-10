@@ -1,3 +1,10 @@
+Các thư viện cần thiết trước khi chạy bot server
+```
+psutil==6.1.1
+python-telegram-bot==13.13
+Requests==2.32.3
+```
+
 Sửa tệp `maindev/your_information.py`
 
 Những thông tin cần phải sửa 
@@ -29,3 +36,4 @@ Các command tương tác với bot telegram sau khi chạy thành công script
 /p : Lấy thông tin người dùng (tên, seniority)
 /a month date : Gọi danh sách lấy lịch trong tháng
 ```
+
