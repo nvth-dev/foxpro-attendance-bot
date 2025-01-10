@@ -19,14 +19,16 @@ Chỉnh sửa biến access_token
 
 Sau đó sử dụng command dưới đây để cập nhật jwt manual
 
-> python3 maindev/db/update_jwt_manual.py
-
+```cmd
+python3 maindev/db/update_jwt_manual.py
+```
 Lưu ý: Sử dụng burpsuite bắt request app lấy jwt trên
 
 để chạy ẩn server bot telegram, sử dụng command
 
-> python3 maindev/run.py 
-
+```cmd
+python3 maindev/run.py 
+```
 
 Các command tương tác với bot telegram sau khi chạy thành công script
 
