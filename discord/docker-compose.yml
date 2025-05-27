@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  my-python-app:
+    build: .
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: supervisord -c /etc/supervisor/conf.d/supervisord.conf
